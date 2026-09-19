@@ -1,0 +1,2 @@
+id,name,city,state,startDate,endDate,venue,address,ticketLink,status,featured
+sample-show,Sample Reptile Expo,Dallas,TX,2026-10-10,2026-10-11,Sample Venue,"123 Example St, Dallas, TX 75001",https://example.com,hidden,FALSE
