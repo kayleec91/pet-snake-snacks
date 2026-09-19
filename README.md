@@ -61,9 +61,9 @@ The existing Lone Star spreadsheet may already have an Apps Script deployment. T
 
 1. In the Google Sheet, choose **Extensions**, then **Apps Script**.
 2. Add a new script file named `PetSnakeSnacks`.
-3. Open `google-sheets/Pet_Snake_Snacks_Apps_Script.gs` in this project.
-4. Copy its contents into the new script file.
-5. If the existing script already has a `doGet()` function, do not keep two functions with the same name. Rename this file's `doGet()` to `getPetSnakeSnacksEvents()` and route the existing `doGet(e)` to it, or use a separate Apps Script project for this tab.
+3. Keep the existing Lone Star `doGet(e)` function. Do not create a second `doGet`.
+4. Add `const SHEET_PET_SNAKE_SNACKS = "Pet Snake Snacks";` with the other sheet constants.
+5. Add a `petSnakeSnacksEvents` action inside the existing `doGet(e)` and add the `getPetSnakeSnacksEvents()` function supplied in the setup instructions.
 6. Choose **Deploy**, then **New deployment**.
 7. Select **Web app**.
 8. Execute as yourself and allow access to anyone.

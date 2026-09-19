@@ -130,7 +130,8 @@ function App() {
       setEventsState("setup");
       return;
     }
-    fetch(endpoint)
+    const scheduleUrl = `${endpoint}${endpoint.includes("?") ? "&" : "?"}action=petSnakeSnacksEvents`;
+    fetch(scheduleUrl)
       .then((response) => {
         if (!response.ok) throw new Error("Schedule request failed");
         return response.json();
