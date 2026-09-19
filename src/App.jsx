@@ -3,6 +3,7 @@ import {
   CalendarDays,
   Check,
   ChevronDown,
+  ExternalLink,
   MapPin,
   Menu,
   MessageCircle,
@@ -214,23 +215,47 @@ function App() {
             <div><p className="eyebrow light">Expo pickup</p><h2>Catch us around Texas.</h2></div>
             <p>Show dates and attendance can change. Text before traveling to confirm Pet Snake Snacks will be there.</p>
           </div>
-          <div className="event-grid">
+          <div className="event-list">
             {eventsState === "loading" && <p className="schedule-message">Loading upcoming shows…</p>}
             {eventsState === "setup" && <p className="schedule-message">Upcoming show dates will appear here once the Google Sheet is connected.</p>}
             {eventsState === "error" && <p className="schedule-message">The show schedule is temporarily unavailable. Please text us for the next pickup date.</p>}
             {eventsState === "ready" && upcomingEvents.length === 0 && <p className="schedule-message">New show dates are coming soon. Text us for the latest schedule.</p>}
-            {upcomingEvents.map((event) => (
-              <article className="event-card" key={event.id || `${event.name}-${event.startDate}`}>
-                {event.featured && <span className="event-badge">Featured show</span>}
-                <h3>{event.name}</h3>
-                <p className="event-date"><CalendarDays size={19} /> {dateRange(event.startDate, event.endDate)}</p>
-                <p><MapPin size={19} /><span><strong>{event.venue}</strong><small>{event.address || `${event.city}, ${event.state || "TX"}`}</small></span></p>
-                <div className="event-actions">
-                  {event.address && <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.address)}`} target="_blank" rel="noreferrer">Open address</a>}
-                  {event.ticketLink && <a href={event.ticketLink} target="_blank" rel="noreferrer">Event details</a>}
+            {upcomingEvents.length > 0 && (
+              <div className="event-table" role="table" aria-label="Upcoming expos where Pet Snake Snacks will be vending">
+                <div className="event-table-head" role="row">
+                  <span role="columnheader">Date</span>
+                  <span role="columnheader">Expo</span>
+                  <span role="columnheader">Location</span>
+                  <span role="columnheader">Expo website</span>
                 </div>
-              </article>
-            ))}
+                {upcomingEvents.map((event) => (
+                  <div className="event-row" role="row" key={event.id || `${event.name}-${event.startDate}`}>
+                    <div className="event-row-date" role="cell">
+                      <CalendarDays size={17} />
+                      <span>{dateRange(event.startDate, event.endDate)}</span>
+                    </div>
+                    <div className="event-row-name" role="cell">
+                      <strong>{event.name}</strong>
+                      {event.featured && <span className="event-badge">Featured</span>}
+                    </div>
+                    <div className="event-row-location" role="cell">
+                      <MapPin size={17} />
+                      <span>
+                        <strong>{event.city}, {event.state || "TX"}</strong>
+                        {event.venue && <small>{event.venue}</small>}
+                      </span>
+                    </div>
+                    <div className="event-row-link" role="cell">
+                      {event.ticketLink ? (
+                        <a href={event.ticketLink} target="_blank" rel="noreferrer">View show <ExternalLink size={14} /></a>
+                      ) : (
+                        <span>Details coming soon</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
