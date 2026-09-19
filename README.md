@@ -7,10 +7,14 @@ This is a complete React and Vite website prepared for GitHub and Vercel. It inc
 * Mice, rats, rabbits, guinea pigs, chicks, and quail
 * A Google Sheets powered expo schedule
 * A text only call to action for large live feeder preorders
+* Irving shop pickup by request for orders over $30
+* The official Pet Snake Snacks Facebook link
 * No checkout, online payments, order form, or shipping offer
 * Mobile friendly styling
 
 The public phone number is **(469) 300-0685** and the site marks text as preferred.
+
+The family story features Otis and Meleah using the cleaned expo photograph in `public/otis-meleah-expo.webp`.
 
 ## 1. Preview the website on your computer
 

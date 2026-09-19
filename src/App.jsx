@@ -8,11 +8,13 @@ import {
   MessageCircle,
   ShieldCheck,
   Snowflake,
+  Store,
   X,
 } from "lucide-react";
 
 const PHONE_DISPLAY = "(469) 300-0685";
 const PHONE_DIGITS = "14693000685";
+const FACEBOOK_URL = "https://www.facebook.com/PetSnakeSnacks/";
 
 const mice = [
   { size: "Small pinks", live: true, frozen: true, age: "1 day", weight: "1 to 2 g", length: "0.5 to 1 in" },
@@ -38,18 +40,15 @@ const rats = [
 
 const otherFeeders = [
   { name: "Rabbits", note: "Available by weight" },
-  { name: "Guinea pigs", note: "Single feeders" },
+  { name: "Frozen guinea pigs", note: "Available as stocked" },
   { name: "Chicks", note: "Small and bulk quantities" },
-  { name: "Extra small quail", note: "Ask about current availability" },
-  { name: "Small quail", note: "Ask about current availability" },
-  { name: "Medium quail", note: "Ask about current availability" },
-  { name: "Large quail", note: "Ask about current availability" },
+  { name: "Quail", note: "Extra small, small, medium, and large" },
 ];
 
 const faqs = [
   {
     q: "Do you ship feeders?",
-    a: "Not at this time. Feeders are available for pickup at the reptile expos listed on this website.",
+    a: "Not at this time. Feeders are available for pickup at the reptile expos listed on this website. Shop pickup in Irving, Texas is also available by request for orders over $30.",
   },
   {
     q: "Can I preorder feeders?",
@@ -159,6 +158,7 @@ function App() {
           <a href="#shows" onClick={() => setMenuOpen(false)}>Expo schedule</a>
           <a href="#story" onClick={() => setMenuOpen(false)}>Our story</a>
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href={FACEBOOK_URL} target="_blank" rel="noreferrer">Facebook</a>
           <a className="nav-cta" href={textHref}>Text about a large live order</a>
         </nav>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
@@ -204,6 +204,7 @@ function App() {
           <div className="notice-row">
             <span><Snowflake size={18} /> Frozen feeders packed for transport</span>
             <span><MessageCircle size={18} /> Large live orders may be preordered by text</span>
+            <span><Store size={18} /> Irving shop pickup by request for orders over $30</span>
           </div>
         </section>
 
@@ -233,17 +234,21 @@ function App() {
         </section>
 
         <section className="story section" id="story">
-          <div className="story-stat"><strong>’02</strong><span>Serving reptiles since</span></div>
+          <div className="story-photo-wrap">
+            <img className="story-photo" src="/otis-meleah-expo.webp" alt="Otis and Meleah of Pet Snake Snacks at a Texas reptile expo" />
+            <div className="story-stat"><strong>’02</strong><span>Serving reptiles since</span></div>
+          </div>
           <div>
             <p className="eyebrow">Our family story</p>
-            <h2>Meet the family behind Pet Snake Snacks.</h2>
-            <p>For more than two decades, Pet Snake Snacks has been a familiar name at reptile shows across Texas. What started as a family commitment to better feeder quality became a trusted stop for keepers who value consistency, honest guidance, and a friendly face behind the table.</p>
-            <p>From first time snake owners to longtime breeders, we help customers compare feeder sizes and plan ahead for expo pickup.</p>
+            <h2>Meet Otis and Meleah.</h2>
+            <p>For more than two decades, Otis and Meleah have made Pet Snake Snacks a familiar name at reptile shows across Texas. What started as a family commitment to better feeder quality became a trusted stop for keepers who value consistency, honest guidance, and a friendly face behind the table.</p>
+            <p>From first time snake owners to longtime breeders, they help customers compare feeder sizes and plan ahead for expo pickup. Shop pickup in Irving is also available by request for orders over $30.</p>
+            <a className="facebook-link" href={FACEBOOK_URL} target="_blank" rel="noreferrer">Follow Pet Snake Snacks on Facebook</a>
           </div>
         </section>
 
         <section className="preorder section">
-          <div><p className="eyebrow light">Planning a large live order?</p><h2>Reserve it before the next show.</h2><p>Large live feeder orders may be preordered for expo pickup. Text is preferred. We will confirm availability and pickup details with you directly.</p></div>
+          <div><p className="eyebrow light">Planning a large live order?</p><h2>Reserve it before the next show.</h2><p>Large live feeder orders may be preordered for expo pickup. Shop pickup in Irving is available by request for orders over $30. Text is preferred, and we will confirm availability and pickup details with you directly.</p></div>
           <a className="button primary" href={textHref}><MessageCircle size={20} /> Text {PHONE_DISPLAY}</a>
         </section>
 
@@ -264,7 +269,7 @@ function App() {
 
       <footer>
         <div className="footer-brand"><img src="/pss-logo-000.jpg" alt="" /><span><strong>Pet Snake Snacks</strong><small>Nourishing dinners for reptiles</small></span></div>
-        <div><a href="#menu">Feeders</a><a href="#shows">Shows</a><a href={textHref}>Text us</a></div>
+        <div><a href="#menu">Feeders</a><a href="#shows">Shows</a><a href={textHref}>Text us</a><a href={FACEBOOK_URL} target="_blank" rel="noreferrer">Facebook</a></div>
         <p>© 2026 Pet Snake Snacks. Family owned in Texas.<br />Show dates and stock are subject to confirmation.</p>
       </footer>
     </>
